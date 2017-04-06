@@ -1,1 +1,1 @@
-# init-c
+Readme for ft_contrast.
