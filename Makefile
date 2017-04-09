@@ -2,13 +2,13 @@
 
 LIBRARY = ./libft/libft.a
 
-NAME = program
+NAME = ft_contrast
 
-HEADERS = program.h
+HEADERS = ft_contrast.h
 
-OBJECTS = program.o
+OBJECTS = ft_contrast.o
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address
 
 all: $(NAME)
 
@@ -17,7 +17,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -L. ./libft/libft.a -o $@
 
 %.o: %.c $(HEADERS)
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
