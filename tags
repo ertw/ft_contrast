@@ -12,7 +12,8 @@ $(NAME)	libft/Makefile	/^$(NAME): $(OBJECTS)$/;"	t
 BUFF_SIZE	libft/get_next_line.h	/^# define BUFF_SIZE /;"	d
 CFLAGS	Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address$/;"	m
 CFLAGS	Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g$/;"	m
-CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	libft/Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	libft/Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g$/;"	m
 GET_NEXT_LINE_H	libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 HEADERS	Makefile	/^HEADERS = ft_contrast.h$/;"	m
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
@@ -123,6 +124,7 @@ len	libft/libft.h	/^	size_t			len;$/;"	m	struct:s_vec	typeref:typename:size_t
 main	ft_contrast.c	/^int		main(int ac, char **av)$/;"	f	typeref:typename:int
 maxval	ft_contrast.c	/^	int		maxval;$/;"	m	struct:s_pgm	typeref:typename:int	file:
 mode	Makefile	/^	mode = debug$/;"	m
+mode	libft/Makefile	/^	mode = debug$/;"	m
 next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 nl_ptr	libft/get_next_line.h	/^	char			*nl_ptr;$/;"	m	struct:s_tuple	typeref:typename:char *
 parseheader	ft_contrast.c	/^char		*parseheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:char *
@@ -143,6 +145,6 @@ t_vec	libft/libft.h	/^}					t_vec;$/;"	t	typeref:struct:s_vec
 width	ft_contrast.c	/^	int		width;$/;"	m	struct:s_pgm	typeref:typename:int	file:
 writeadjustedcontrast	ft_contrast.c	/^void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
 writeheader	ft_contrast.c	/^void		writeheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:void
-writetoimgdata	ft_contrast.c	/^void		writetoimgdata(FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
+writetoimgdata	ft_contrast.c	/^int		*writetoimgdata(FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:int *
 wstrbytelen	libft/wstrbytelen.c	/^int		wstrbytelen(const wchar_t *ws)$/;"	f	typeref:typename:int
 wstrtombstr	libft/wstrtombstr.c	/^int		wstrtombstr(char *dst, const wchar_t *ws)$/;"	f	typeref:typename:int

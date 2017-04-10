@@ -68,13 +68,14 @@ void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)
 	fclose(input);
 }
 
-void		writetoimgdata(FILE *input, t_pgm *pgm)
+int		*writetoimgdata(FILE *input, t_pgm *pgm)
 {
 	char	*line;
 	size_t	bufsize = 0;
 	int	*imgdata;
 	int	i = 0;
 
+	char *tofree = line = malloc(0);
 	imgdata = malloc(sizeof(int*) * pgm->width * pgm->height);
 	while ((getdelim(&line, &bufsize, (int)' ', input) > 0))
 	{
@@ -82,10 +83,10 @@ void		writetoimgdata(FILE *input, t_pgm *pgm)
 		imgdata[i] = atoi(line);
 		i++;
 	}
-	ft_strdel(&line);
-//	ft_memdel((void*)imgdata);
-	free(imgdata);
+	ft_memdel((void*)&tofree);
+	ft_memdel((void*)&line);
 	fclose(input);
+	return (imgdata);
 }
 
 int		main(int ac, char **av)
@@ -93,6 +94,7 @@ int		main(int ac, char **av)
 	FILE	*input;
 //	int	byte;
 	t_pgm	pgm;
+	int	*imgdata;
 
 	if (!ac)
 	{
@@ -107,7 +109,8 @@ int		main(int ac, char **av)
 	ft_putnbr(pgm.maxval);
 	ft_putchar('\n');
 	writeheader(fopen("output.pgm", "ab+"), &pgm);
-	writetoimgdata(input, &pgm);
+	imgdata = writetoimgdata(input, &pgm);
+	ft_memdel((void*)&imgdata);
 //	writeadjustedcontrast(fopen("output.pgm", "ab+"), input, &pgm);
 //	while ((byte = getc(file)) >= 0)
 //	{
