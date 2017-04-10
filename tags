@@ -10,7 +10,8 @@ $(NAME)	libft/Makefile	/^$(NAME): $(OBJECTS)$/;"	t
 %.o	Makefile	/^%.o: %.c $(HEADERS)$/;"	t
 %.o	libft/Makefile	/^%.o: %.c$/;"	t
 BUFF_SIZE	libft/get_next_line.h	/^# define BUFF_SIZE /;"	d
-CFLAGS	Makefile	/^CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	Makefile	/^	CFLAGS = -Wall -Werror -Wextra -g$/;"	m
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address$/;"	m
 GET_NEXT_LINE_H	libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 HEADERS	Makefile	/^HEADERS = ft_contrast.h$/;"	m
@@ -22,7 +23,7 @@ OBJECTS	Makefile	/^OBJECTS = ft_contrast.o$/;"	m
 OBJECTS	libft/Makefile	/^OBJECTS = \\$/;"	m
 READ_EOF	libft/get_next_line.h	/^# define READ_EOF /;"	d
 READ_ERROR	libft/get_next_line.h	/^# define READ_ERROR /;"	d
-all	Makefile	/^all: $(NAME)$/;"	t
+all	Makefile	/^all: information $(NAME)$/;"	t
 all	libft/Makefile	/^all: $(NAME)$/;"	t
 applycontrast	ft_contrast.c	/^int		applycontrast(int pixel, double contrast, int maxgrey)$/;"	f	typeref:typename:int
 char_to_int	libft/ft_atoi.c	/^static int	char_to_int(char c)$/;"	f	typeref:typename:int	file:
@@ -113,6 +114,7 @@ ft_wctomb	libft/ft_wctomb.c	/^int		ft_wctomb(char *s, wchar_t wchar)$/;"	f	typer
 ft_wordcount	libft/ft_wordcount.c	/^unsigned int	ft_wordcount(const char *s, const char c, unsigned int count)$/;"	f	typeref:typename:unsigned int
 ft_wstrlen	libft/ft_wstrlen.c	/^size_t	ft_wstrlen(const wchar_t *ws)$/;"	f	typeref:typename:size_t
 height	ft_contrast.c	/^	int		height;$/;"	m	struct:s_pgm	typeref:typename:int	file:
+information	Makefile	/^information:$/;"	t
 is_sign	libft/ft_atoi.c	/^static int	is_sign(char c)$/;"	f	typeref:typename:int	file:
 is_str_in_str	libft/ft_strstr.c	/^static int	is_str_in_str(const char *s, const char *find)$/;"	f	typeref:typename:int	file:
 is_str_in_strn	libft/ft_strnstr.c	/^static int	is_str_in_strn(const char *s, const char *find, size_t len)$/;"	f	typeref:typename:int	file:
@@ -120,10 +122,10 @@ len	libft/get_next_line.h	/^	int				len;$/;"	m	struct:s_tuple	typeref:typename:i
 len	libft/libft.h	/^	size_t			len;$/;"	m	struct:s_vec	typeref:typename:size_t
 main	ft_contrast.c	/^int		main(int ac, char **av)$/;"	f	typeref:typename:int
 maxval	ft_contrast.c	/^	int		maxval;$/;"	m	struct:s_pgm	typeref:typename:int	file:
+mode	Makefile	/^	mode = debug$/;"	m
 next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 nl_ptr	libft/get_next_line.h	/^	char			*nl_ptr;$/;"	m	struct:s_tuple	typeref:typename:char *
 parseheader	ft_contrast.c	/^char		*parseheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:char *
-populateimagedata	ft_contrast.c	/^void		populateimagedata(FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
 pos	libft/get_next_line.h	/^	int				pos;$/;"	m	struct:s_tuple	typeref:typename:int
 re	Makefile	/^re: fclean all$/;"	t
 re	libft/Makefile	/^re: fclean all$/;"	t
@@ -141,5 +143,6 @@ t_vec	libft/libft.h	/^}					t_vec;$/;"	t	typeref:struct:s_vec
 width	ft_contrast.c	/^	int		width;$/;"	m	struct:s_pgm	typeref:typename:int	file:
 writeadjustedcontrast	ft_contrast.c	/^void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
 writeheader	ft_contrast.c	/^void		writeheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:void
+writetoimgdata	ft_contrast.c	/^void		writetoimgdata(FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
 wstrbytelen	libft/wstrbytelen.c	/^int		wstrbytelen(const wchar_t *ws)$/;"	f	typeref:typename:int
 wstrtombstr	libft/wstrtombstr.c	/^int		wstrtombstr(char *dst, const wchar_t *ws)$/;"	f	typeref:typename:int
