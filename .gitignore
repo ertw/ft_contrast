@@ -1,6 +1,6 @@
 # ft_contrast
 ft_contrast
-output.pgm
+*.pgm
 
 # Object files
 *.o

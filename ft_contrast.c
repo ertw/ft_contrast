@@ -18,8 +18,8 @@ char		*parseheader(FILE *file, t_pgm *pgm)
 	line = NULL;
 	getline(&line, &bufsize, file);
 	ft_strdel(&line);
-	getline(&line, &bufsize, file);
-	ft_strdel(&line);
+//	getline(&line, &bufsize, file);
+//	ft_strdel(&line);
 	getline(&line, &bufsize, file);
 	tofree = line;
 	token = strsep(&line, " ");
@@ -48,7 +48,6 @@ int		applycontrast(int pixel, double contrast, int maxgrey)
 }
 
 // resultPixel = pixelColor ∗ (contrastLevel) ∗ maxGreyLevel
-//
 void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)
 {
 	char	*line;
@@ -57,7 +56,6 @@ void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)
 
 	while (getdelim(&line, &bufsize, (int)' ', input) > 0)
 	{
-
 		outpixel = applycontrast(atoi(line), 0.0008, pgm->maxval);
 		fprintf(output, "%d ", outpixel
 				> pgm->maxval
@@ -69,6 +67,29 @@ void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)
 	fclose(input);
 }
 
+void		populateimagedata(FILE *input, t_pgm *pgm)
+{
+	char	*line;
+	size_t	bufsize = 0;
+	int	*imagedata;
+	int	i = 0;
+
+//	imagedata = ft_memalloc(pgm->width * pgm->height);
+	imagedata = malloc(sizeof(int) * pgm->width * pgm->height);
+	while (getdelim(&line, &bufsize, (int)' ', input) > 0)
+	{
+		imagedata[i]  = applycontrast(atoi(line), 0.0008, pgm->maxval);
+//		fprintf(output, "%d ", outpixel
+//				> pgm->maxval
+//				? pgm->maxval
+//				: outpixel);
+//		printf("%d ", imagedata[i]);
+		i++;
+	}
+	ft_strdel(&line);
+	ft_memdel((void*)&imagedata);
+	fclose(input);
+}
 
 int		main(int ac, char **av)
 {
@@ -89,7 +110,8 @@ int		main(int ac, char **av)
 	ft_putnbr(pgm.maxval);
 	ft_putchar('\n');
 	writeheader(fopen("output.pgm", "ab+"), &pgm);
-	writeadjustedcontrast(fopen("output.pgm", "ab+"), input, &pgm);
+	populateimagedata(input, &pgm);
+//	writeadjustedcontrast(fopen("output.pgm", "ab+"), input, &pgm);
 //	while ((byte = getc(file)) >= 0)
 //	{
 //		ft_putnbr(byte);

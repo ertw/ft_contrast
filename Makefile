@@ -8,7 +8,7 @@ HEADERS = ft_contrast.h
 
 OBJECTS = ft_contrast.o
 
-CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address
 
 all: $(NAME)
 

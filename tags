@@ -10,8 +10,8 @@ $(NAME)	libft/Makefile	/^$(NAME): $(OBJECTS)$/;"	t
 %.o	Makefile	/^%.o: %.c $(HEADERS)$/;"	t
 %.o	libft/Makefile	/^%.o: %.c$/;"	t
 BUFF_SIZE	libft/get_next_line.h	/^# define BUFF_SIZE /;"	d
-CFLAGS	Makefile	/^CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address$/;"	m
-CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Werror -Wextra -g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Werror -Wextra#-g -fno-omit-frame-pointer -fsanitize=address$/;"	m
 GET_NEXT_LINE_H	libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
 HEADERS	Makefile	/^HEADERS = ft_contrast.h$/;"	m
 LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
@@ -74,7 +74,6 @@ ft_putstr	libft/ft_putstr.c	/^void	ft_putstr(const char *s)$/;"	f	typeref:typena
 ft_putstr2	libft/ft_putstr2.c	/^void	ft_putstr2(char **s)$/;"	f	typeref:typename:void
 ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f	typeref:typename:void
 ft_putstrc	libft/ft_putstrc.c	/^void		ft_putstrc(const char *s, int r, int g, int b)$/;"	f	typeref:typename:void
-ft_read	libft/get_next_line.c	/^static int	ft_read(const int fd, char **s)$/;"	f	typeref:typename:int	file:
 ft_stpcpy	libft/ft_stpcpy.c	/^char	*ft_stpcpy(char *dst, const char *src)$/;"	f	typeref:typename:char *
 ft_strcat	libft/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f	typeref:typename:char *
 ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f	typeref:typename:char *
@@ -113,7 +112,6 @@ ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
 ft_wctomb	libft/ft_wctomb.c	/^int		ft_wctomb(char *s, wchar_t wchar)$/;"	f	typeref:typename:int
 ft_wordcount	libft/ft_wordcount.c	/^unsigned int	ft_wordcount(const char *s, const char c, unsigned int count)$/;"	f	typeref:typename:unsigned int
 ft_wstrlen	libft/ft_wstrlen.c	/^size_t	ft_wstrlen(const wchar_t *ws)$/;"	f	typeref:typename:size_t
-get_next_line	libft/get_next_line.c	/^int			get_next_line(const int fd, char **line)$/;"	f	typeref:typename:int
 height	ft_contrast.c	/^	int		height;$/;"	m	struct:s_pgm	typeref:typename:int	file:
 is_sign	libft/ft_atoi.c	/^static int	is_sign(char c)$/;"	f	typeref:typename:int	file:
 is_str_in_str	libft/ft_strstr.c	/^static int	is_str_in_str(const char *s, const char *find)$/;"	f	typeref:typename:int	file:
@@ -125,6 +123,7 @@ maxval	ft_contrast.c	/^	int		maxval;$/;"	m	struct:s_pgm	typeref:typename:int	fil
 next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 nl_ptr	libft/get_next_line.h	/^	char			*nl_ptr;$/;"	m	struct:s_tuple	typeref:typename:char *
 parseheader	ft_contrast.c	/^char		*parseheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:char *
+populateimagedata	ft_contrast.c	/^void		populateimagedata(FILE *input, t_pgm *pgm)$/;"	f	typeref:typename:void
 pos	libft/get_next_line.h	/^	int				pos;$/;"	m	struct:s_tuple	typeref:typename:int
 re	Makefile	/^re: fclean all$/;"	t
 re	libft/Makefile	/^re: fclean all$/;"	t
