@@ -74,8 +74,10 @@ int		*writetoimgdata(FILE *input, t_pgm *pgm)
 	size_t	bufsize = 0;
 	int	*imgdata;
 	int	i = 0;
+	char	*tofree;
 
-	char *tofree = line = malloc(0);
+	line = malloc(0);
+	tofree = line;
 	imgdata = malloc(sizeof(int*) * pgm->width * pgm->height);
 	while ((getdelim(&line, &bufsize, (int)' ', input) > 0))
 	{
@@ -83,8 +85,9 @@ int		*writetoimgdata(FILE *input, t_pgm *pgm)
 		imgdata[i] = atoi(line);
 		i++;
 	}
-	ft_memdel((void*)&tofree);
-	ft_memdel((void*)&line);
+	free(tofree);
+//	ft_memdel((void*)&tofree);
+//	ft_memdel((void*)&line);
 	fclose(input);
 	return (imgdata);
 }
