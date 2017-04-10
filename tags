@@ -115,7 +115,9 @@ ft_wctomb	libft/ft_wctomb.c	/^int		ft_wctomb(char *s, wchar_t wchar)$/;"	f	typer
 ft_wordcount	libft/ft_wordcount.c	/^unsigned int	ft_wordcount(const char *s, const char c, unsigned int count)$/;"	f	typeref:typename:unsigned int
 ft_wstrlen	libft/ft_wstrlen.c	/^size_t	ft_wstrlen(const wchar_t *ws)$/;"	f	typeref:typename:size_t
 height	ft_contrast.c	/^	int		height;$/;"	m	struct:s_pgm	typeref:typename:int	file:
+imgdata	ft_contrast.c	/^	int		*imgdata;$/;"	m	struct:s_input	typeref:typename:int *	file:
 information	Makefile	/^information:$/;"	t
+input	ft_contrast.c	/^	FILE		*input;$/;"	m	struct:s_input	typeref:typename:FILE *	file:
 is_sign	libft/ft_atoi.c	/^static int	is_sign(char c)$/;"	f	typeref:typename:int	file:
 is_str_in_str	libft/ft_strstr.c	/^static int	is_str_in_str(const char *s, const char *find)$/;"	f	typeref:typename:int	file:
 is_str_in_strn	libft/ft_strnstr.c	/^static int	is_str_in_strn(const char *s, const char *find, size_t len)$/;"	f	typeref:typename:int	file:
@@ -125,12 +127,17 @@ main	ft_contrast.c	/^int		main(int ac, char **av)$/;"	f	typeref:typename:int
 maxval	ft_contrast.c	/^	int		maxval;$/;"	m	struct:s_pgm	typeref:typename:int	file:
 mode	Makefile	/^	mode = debug$/;"	m
 mode	libft/Makefile	/^	mode = debug$/;"	m
+mutateimgdata	ft_contrast.c	/^void		mutateimgdata(t_input *inputcont)$/;"	f	typeref:typename:void
 next	libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
 nl_ptr	libft/get_next_line.h	/^	char			*nl_ptr;$/;"	m	struct:s_tuple	typeref:typename:char *
 parseheader	ft_contrast.c	/^char		*parseheader(FILE *file, t_pgm *pgm)$/;"	f	typeref:typename:char *
+partiallen	ft_contrast.c	/^	int		partiallen;$/;"	m	struct:s_input	typeref:typename:int	file:
+pgm	ft_contrast.c	/^	t_pgm		*pgm;$/;"	m	struct:s_input	typeref:typename:t_pgm *	file:
+pos	ft_contrast.c	/^	int		pos;$/;"	m	struct:s_input	typeref:typename:int	file:
 pos	libft/get_next_line.h	/^	int				pos;$/;"	m	struct:s_tuple	typeref:typename:int
 re	Makefile	/^re: fclean all$/;"	t
 re	libft/Makefile	/^re: fclean all$/;"	t
+s_input	ft_contrast.c	/^typedef struct		s_input$/;"	s	file:
 s_list	libft/libft.h	/^typedef struct		s_list$/;"	s
 s_pgm	ft_contrast.c	/^typedef struct		s_pgm$/;"	s	file:
 s_tuple	libft/get_next_line.h	/^typedef struct		s_tuple$/;"	s
@@ -138,6 +145,7 @@ s_vec	libft/libft.h	/^typedef struct		s_vec$/;"	s
 size	libft/libft.h	/^	size_t			size;$/;"	m	struct:s_vec	typeref:typename:size_t
 str	libft/get_next_line.h	/^	char			*str;$/;"	m	struct:s_tuple	typeref:typename:char *
 str	libft/libft.h	/^	char			*str;$/;"	m	struct:s_vec	typeref:typename:char *
+t_input	ft_contrast.c	/^}			t_input;$/;"	t	typeref:struct:s_input	file:
 t_list	libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_pgm	ft_contrast.c	/^}			t_pgm;$/;"	t	typeref:struct:s_pgm	file:
 t_tuple	libft/get_next_line.h	/^}					t_tuple;$/;"	t	typeref:struct:s_tuple

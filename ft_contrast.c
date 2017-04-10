@@ -68,36 +68,58 @@ void		writeadjustedcontrast(FILE *output, FILE *input, t_pgm *pgm)
 	fclose(input);
 }
 
+typedef struct		s_input
+{
+	t_pgm		*pgm;
+	FILE		*input;
+	int		*imgdata;
+	int		pos;
+	int		partiallen;
+}			t_input;
+
 int		*writetoimgdata(FILE *input, t_pgm *pgm)
 {
-	char	*line;
-	size_t	bufsize = 0;
-	int	*imgdata;
-	int	i = 0;
-	char	*tofree;
+	char		*line;
+	size_t		bufsize = 0;
+	int		*imgdata;
+	int		i = 0;
+	char		*tofree;
 
-	line = malloc(0);
+	line = malloc(1);
 	tofree = line;
 	imgdata = malloc(sizeof(int*) * pgm->width * pgm->height);
 	while ((getdelim(&line, &bufsize, (int)' ', input) > 0))
 	{
-//		imgdata[i] = applycontrast(atoi(line), 0.0008, pgm->maxval);
 		imgdata[i] = atoi(line);
 		i++;
 	}
 	free(tofree);
-//	ft_memdel((void*)&tofree);
-//	ft_memdel((void*)&line);
 	fclose(input);
 	return (imgdata);
 }
 
+void		mutateimgdata(t_input *inputcont)
+{
+	int	i;
+	int	oldpixel;
+
+	i = inputcont->pos;
+	while (i < inputcont->partiallen)
+	{
+		oldpixel = inputcont->imgdata[i];
+		applycontrast(oldpixel, 0.0008, inputcont->pgm->maxval);
+		i++;
+	}
+}
+
 int		main(int ac, char **av)
 {
-	FILE	*input;
-//	int	byte;
-	t_pgm	pgm;
-	int	*imgdata;
+	FILE		*input;
+	t_pgm		pgm;
+	pthread_t	thread1;
+	pthread_t	thread2;
+	t_input		inputcont;
+	int		*imgdata;
 
 	if (!ac)
 	{
@@ -112,12 +134,15 @@ int		main(int ac, char **av)
 	ft_putnbr(pgm.maxval);
 	ft_putchar('\n');
 	writeheader(fopen("output.pgm", "ab+"), &pgm);
+	inputcont.pgm = &pgm;
+	inputcont.input = input;
 	imgdata = writetoimgdata(input, &pgm);
-	ft_memdel((void*)&imgdata);
-//	writeadjustedcontrast(fopen("output.pgm", "ab+"), input, &pgm);
-//	while ((byte = getc(file)) >= 0)
-//	{
-//		ft_putnbr(byte);
-//		ft_putchar(' ');
-//	}
+	inputcont.partiallen = (pgm.width * pgm.height) / 2;
+	inputcont.imgdata = imgdata;
+	inputcont.pos = 0;
+	pthread_create(&thread1, NULL, (void*)mutateimgdata, (void*)&inputcont);
+	inputcont.pos = (pgm.width * pgm.height) / 2;
+	pthread_create(&thread2, NULL, (void*)mutateimgdata, (void*)&inputcont);
+	pthread_join(thread1, NULL);
+	free(imgdata);
 }
